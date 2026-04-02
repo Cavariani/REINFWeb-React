@@ -220,6 +220,123 @@
   background: rgba(233,115,32,0.08) !important;
 }
 
+/* ── Botão Reporte ──────────────────────────────────────── */
+.reportBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: calc(100% - 1.2rem);
+  margin: 0 0.6rem 0.4rem;
+  padding: 0.52rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.815rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.14s, background 0.14s, border-color 0.14s;
+  white-space: nowrap;
+}
+.reportBtn:hover {
+  color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* ── Modal Reporte ──────────────────────────────────────── */
+.reportOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.reportModal {
+  background: var(--bg-card, #1a2e2b);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 440px;
+  max-width: calc(100vw - 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.reportModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
+.reportModalClose {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+}
+.reportModalClose:hover { color: rgba(255,255,255,0.8); }
+.reportModalHint {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.45);
+  margin: 0;
+  line-height: 1.5;
+}
+.reportModalTextarea {
+  width: 100%;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.83rem;
+  padding: 0.65rem 0.75rem;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+.reportModalTextarea:focus {
+  outline: none;
+  border-color: rgba(233,115,32,0.5);
+}
+.reportModalTextarea::placeholder { color: rgba(255,255,255,0.25); }
+.reportModalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+}
+.reportModalCancel {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 7px;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.82rem;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  transition: color 0.14s, border-color 0.14s;
+}
+.reportModalCancel:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.2); }
+.reportModalSubmit {
+  background: #E97320;
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  cursor: pointer;
+  transition: background 0.14s;
+}
+.reportModalSubmit:hover:not(:disabled) { background: #d4651a; }
+.reportModalSubmit:disabled { opacity: 0.4; cursor: not-allowed; }
+
 .iconBtnActive {
   color: #E97320 !important;
 }

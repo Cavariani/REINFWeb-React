@@ -206,17 +206,6 @@ function getCnpjFieldKey(evento) {
   return 'cnpjEstab'
 }
 
-function downloadModeloPlanilha(evento) {
-  const cfg = EVENT_CONFIGS[evento]
-  if (!cfg) return
-  const cols = cfg.columns.filter(c => c.key !== 'nrRecibo')
-  const headers = cols.map(c => c.label)
-  const example = cols.map(c => c.tip || '')
-  const ws = XLSX.utils.aoa_to_sheet([headers, example])
-  const wb = XLSX.utils.book_new()
-  XLSX.utils.book_append_sheet(wb, ws, evento)
-  XLSX.writeFile(wb, `Planilha_Modelo_${evento.replace('-', '')}.xlsx`)
-}
 
 // ── R-1000 Query Panel ───────────────────────────────────────────────────────
 function R1kQueryPanel({ cnpj14, certId, query, onConsultar, onUsarRecibo }) {
@@ -985,14 +974,14 @@ function Step2({
                 <strong>Planilha Modelo MLEGATE</strong>. O arquivo deve seguir o formato do evento{' '}
                 <strong>{config.evento || 'selecionado'}</strong>.
               </div>
-              <button
+              <a
                 className={styles.downloadModeloBtn}
-                onClick={() => downloadModeloPlanilha(config.evento)}
-                disabled={!config.evento}
-                title="Baixar planilha modelo para este evento"
+                href="/Planilha_Modelo_REINF.xlsx"
+                download="Planilha_Modelo_REINF.xlsx"
+                title="Baixar planilha modelo"
               >
                 <Download size={13} /> Baixar modelo
-              </button>
+              </a>
             </div>
             <UploadZone type="excel" file={planilha} onFile={handlePlanilhaFile} />
             {planilha && !parseError && tabelaRows.length > 0 && (

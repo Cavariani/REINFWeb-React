@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
+import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { LayoutDashboard, Send, ShieldCheck, History, LogOut, Users, Building2, X, ScanSearch, BarChart2, Sun, Moon, HelpCircle, Globe, FileSpreadsheet, FileDown } from 'lucide-react'
+import { LayoutDashboard, Send, ShieldCheck, History, LogOut, Users, Building2, X, ScanSearch, BarChart2, Sun, Moon, HelpCircle, Globe, FileSpreadsheet, FileDown, AlertCircle } from 'lucide-react'
 import styles from './Sidebar.module.css'
 
 const NAV_BASE = [
@@ -52,7 +53,20 @@ export default function Sidebar({ page, onNavigate, user, onLogout, collapsed = 
   const groups = [...new Set(NAV.map(n => n.group))]
 
   const [easterEgg, setEasterEgg] = useState(false)
+  const [reportOpen, setReportOpen] = useState(false)
+  const [reportText, setReportText] = useState('')
   const clickCount = useRef(0)
+
+  function handleReport() {
+    if (!reportText.trim()) return
+    const subject = encodeURIComponent('Reporte de Problema — MLEGATE REINF')
+    const body = encodeURIComponent(
+      `Usuário: ${user?.nome ?? 'desconhecido'}\n\n${reportText.trim()}`
+    )
+    window.location.href = `mailto:pedro.cavariani@mlegate.com?subject=${subject}&body=${body}`
+    setReportText('')
+    setReportOpen(false)
+  }
 
   function handleAvatarClick() {
     clickCount.current++
@@ -104,6 +118,13 @@ export default function Sidebar({ page, onNavigate, user, onLogout, collapsed = 
           >
             <HelpCircle size={14} />
           </button>
+          <button
+            className={styles.iconBtn}
+            onClick={() => setReportOpen(true)}
+            title="Reporte um Problema"
+          >
+            <AlertCircle size={14} />
+          </button>
         </div>
         <div className={styles.userRowCollapsed}>
           <div className={styles.avatar} onClick={handleAvatarClick} title={user?.nome ?? 'Usuário'} style={{ cursor: 'pointer' }}>
@@ -134,7 +155,7 @@ export default function Sidebar({ page, onNavigate, user, onLogout, collapsed = 
       </div>
       <div className={styles.logoSubStrip}>
         Plataforma REINF
-        <span className={styles.versionBadge}>v0.0.1</span>
+        <span className={styles.versionBadge}>v1.0.0</span>
       </div>
 
       {/* Nav */}
@@ -170,6 +191,56 @@ export default function Sidebar({ page, onNavigate, user, onLogout, collapsed = 
         <HelpCircle size={14} />
         <span>Ajuda</span>
       </button>
+
+      {/* Reporte */}
+      <button className={styles.reportBtn} onClick={() => setReportOpen(true)}>
+        <AlertCircle size={14} />
+        <span>Reporte um Problema</span>
+      </button>
+
+      {/* Modal reporte — portal para escapar do stacking context do aside */}
+      {createPortal(
+        <AnimatePresence>
+          {reportOpen && (
+            <motion.div
+              className={styles.reportOverlay}
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setReportOpen(false)}
+            >
+              <motion.div
+                className={styles.reportModal}
+                initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
+                onClick={e => e.stopPropagation()}
+              >
+                <div className={styles.reportModalHeader}>
+                  <span>Reporte um Problema</span>
+                  <button className={styles.reportModalClose} onClick={() => setReportOpen(false)}>
+                    <X size={15} />
+                  </button>
+                </div>
+                <p className={styles.reportModalHint}>
+                  Descreva o problema com o máximo de detalhes possível. Seu email será aberto com a mensagem preenchida.
+                </p>
+                <textarea
+                  className={styles.reportModalTextarea}
+                  placeholder="Ex: Ao clicar em Enviar no passo 4, a tela fica carregando e não conclui..."
+                  value={reportText}
+                  onChange={e => setReportText(e.target.value)}
+                  rows={5}
+                  autoFocus
+                />
+                <div className={styles.reportModalActions}>
+                  <button className={styles.reportModalCancel} onClick={() => setReportOpen(false)}>Cancelar</button>
+                  <button className={styles.reportModalSubmit} onClick={handleReport} disabled={!reportText.trim()}>
+                    Abrir no Email
+                  </button>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
       {/* User */}
       <div className={styles.userRow}>
