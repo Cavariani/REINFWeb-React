@@ -1,0 +1,30 @@
+# Node
+node_modules/
+dist/
+.env
+.env.local
+
+# .NET
+api/bin/
+api/obj/
+api/appsettings.Development.json
+api/logs/
+
+# Claude Code
+.claude/
+
+# Documentação interna / instruções Claude
+docs/
+CLAUDE.md
+*.docx
+deployHoje.md
+
+# Arquivos binários de conteúdo
+public/guia-usuario.pdf
+
+# Temporários
+tmp_hash/
+
+# OS
+.DS_Store
+Thumbs.db

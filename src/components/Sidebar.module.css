@@ -1,0 +1,355 @@
+/* ─────────────────────────────────────────────────────────
+   Sidebar — usa --bg-sidebar: teal no light, dark no dark
+───────────────────────────────────────────────────────── */
+.sidebar {
+  width: 224px;
+  min-height: 100vh;
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Logo ───────────────────────────────────────────────── */
+.logoArea {
+  background: #ffffff;
+  padding: 0.9rem 0.75rem;
+  border-bottom: 2px solid #1D3D3A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoImgWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.logoImg {
+  height: 52px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.logoSub { display: none; }
+
+/* Strip "Plataforma REINF" abaixo da área branca */
+.logoSubStrip {
+  background: rgba(233,115,32,0.1);
+  border-bottom: 1px solid rgba(233,115,32,0.22);
+  padding: 0.32rem 0.9rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: #E97320;
+  text-align: center;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.versionBadge {
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  text-transform: lowercase;
+}
+
+/* ── Nav ────────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 0.6rem 0;
+  flex: 1;
+}
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.25rem;
+}
+
+.groupLabel {
+  font-size: 0.56rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #E97320;
+  padding: 0.55rem 0.65rem 0.2rem;
+}
+
+.navItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.52rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.48);
+  font-size: 0.815rem;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  transition: color 0.14s, background 0.14s;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.navItem:hover {
+  color: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.05);
+}
+
+.navItemActive {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+/* Botão CTA — Novo Envio */
+.navItemCta {
+  background: #E97320;
+  color: #ffffff !important;
+  font-weight: 700;
+  margin: 0.1rem 0 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.navItemCta:hover {
+  background: #c9611a !important;
+  color: #ffffff !important;
+}
+
+.navItemCtaActive {
+  background: #bf5a15 !important;
+  color: #ffffff !important;
+}
+
+.navBg {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background: rgba(233,115,32,0.12);
+  border-left: 2px solid #E97320;
+}
+
+.navIcon,
+.navLabel {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Spacer ─────────────────────────────────────────────── */
+.spacer { flex: 1; min-height: 0.5rem; }
+
+/* ── Botão Documentação ─────────────────────────────────── */
+.docsBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: calc(100% - 1.2rem);
+  margin: 0 0.6rem 0.3rem;
+  padding: 0.52rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(233,115,32,0.18);
+  background: rgba(233,115,32,0.05);
+  color: rgba(233,115,32,0.75);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.14s, background 0.14s, border-color 0.14s;
+  white-space: nowrap;
+}
+
+.docsBtn:hover {
+  color: #E97320;
+  background: rgba(233,115,32,0.1);
+  border-color: rgba(233,115,32,0.35);
+}
+
+/* ── Botão Ajuda ────────────────────────────────────────── */
+.helpBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: calc(100% - 1.2rem);
+  margin: 0 0.6rem 0.4rem;
+  padding: 0.52rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.815rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.14s, background 0.14s, border-color 0.14s;
+  white-space: nowrap;
+}
+
+.helpBtn:hover {
+  color: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,255,255,0.14);
+}
+
+.helpBtnActive {
+  color: #E97320 !important;
+  border-color: rgba(233,115,32,0.3) !important;
+  background: rgba(233,115,32,0.08) !important;
+}
+
+.iconBtnActive {
+  color: #E97320 !important;
+}
+
+/* ── User row ───────────────────────────────────────────── */
+.userRow {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.6rem 0.75rem;
+  margin: 0.4rem 0.6rem 0.6rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #F08530 0%, #E06018 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.66rem;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+.userInfo {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.userName {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.userRole {
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.02em;
+}
+
+.userActions {
+  display: flex;
+  gap: 1px;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.35);
+  padding: 4px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: color 0.13s, background 0.13s;
+}
+
+.iconBtn:hover {
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.07);
+}
+
+/* ── Collapsed ──────────────────────────────────────────── */
+.sidebarCollapsed {
+  width: 54px;
+  overflow: visible;
+}
+
+.logoAreaCollapsed {
+  background: #ffffff;
+  padding: 0.85rem 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #1D3D3A;
+}
+
+/* mantido para fallback mas substituído pelo img */
+.logoMark {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #E97320;
+  line-height: 1;
+  letter-spacing: -1px;
+  font-style: italic;
+}
+
+.logoMarkImg {
+  height: 28px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.navItemCollapsed {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 0;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.14s, background 0.14s;
+}
+
+.navItemCollapsed:hover {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.06);
+}
+
+.userRowCollapsed {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+}

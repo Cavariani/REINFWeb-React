@@ -1,0 +1,212 @@
+.container {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* Stats Bar */
+.statsBar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+  flex-wrap: wrap;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.statNum {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.statSuccess .statNum { color: var(--green-600); }
+.statError .statNum { color: var(--red-600); }
+.statPending .statNum { color: var(--gray-400); }
+
+.progressWrap {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progressBar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--gray-200);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--orange-400), var(--orange-600));
+  border-radius: 999px;
+}
+
+.progressLabel {
+  font-size: 0.72rem;
+  color: var(--gray-500);
+  font-weight: 500;
+}
+
+.doneBadge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+}
+
+.doneOk {
+  background: var(--green-100);
+  color: var(--green-700);
+}
+
+.doneWithErrors {
+  background: var(--yellow-50);
+  color: #92400e;
+}
+
+/* Table */
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.table thead tr {
+  background: var(--gray-50);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.table th {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gray-500);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--gray-100);
+  color: var(--gray-700);
+  vertical-align: middle;
+}
+
+.row:last-child td { border-bottom: none; }
+
+.rowError { background: var(--red-50); }
+.rowSuccess { background: white; }
+
+.cellNum {
+  color: var(--gray-400);
+  font-weight: 600;
+  font-size: 0.75rem;
+  width: 36px;
+}
+
+.cellMono {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+}
+
+.cellResult {
+  min-width: 260px;
+}
+
+.dim { color: var(--gray-300); }
+
+/* Evento Tags */
+.eventoTag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 5px;
+  letter-spacing: 0.03em;
+}
+
+.tagR4010 { background: #ede9fe; color: #6d28d9; }
+.tagR4020 { background: #dbeafe; color: #1d4ed8; }
+.tagR2010 { background: #fce7f3; color: #be185d; }
+.tagR1000 { background: var(--orange-100); color: var(--orange-700); }
+
+/* Acao Tags */
+.acaoTag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+
+.acaoEnviar { background: var(--green-100); color: var(--green-700); }
+.acaoAlterar { background: #fef3c7; color: #92400e; }
+.acaoExcluir { background: var(--red-100); color: var(--red-600); }
+
+/* Status cells */
+.statusPending,
+.statusProcessing,
+.statusSuccess,
+.statusError {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.statusPending { color: var(--gray-400); }
+.statusProcessing { color: var(--orange-600); }
+.statusSuccess { color: var(--green-600); }
+.statusError { color: var(--red-600); }
+
+.statusError span {
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recibo {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  background: var(--green-100);
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: var(--green-700);
+}
+
+.spin {
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

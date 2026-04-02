@@ -1,0 +1,429 @@
+/* ══════════════════════════════════════════════════════════
+   LOGIN — Split layout
+   ══════════════════════════════════════════════════════════ */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* ── Painel esquerdo (branding) ──────────────────────────── */
+.brandPanel {
+  flex: 0 0 42%;
+  background: var(--bg-sidebar);
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Grade de pontos no fundo */
+.brandDots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+/* Brilho laranja no canto inferior esquerdo */
+.brandGlow {
+  position: absolute;
+  bottom: -10%;
+  left: -15%;
+  width: 60%;
+  height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(233,115,32,0.18) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.brandContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 2.5rem 2rem;
+  width: 100%;
+  height: 100%;
+}
+
+/* Centro: logo + divider + app name */
+.brandCenter {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.brandLogo {
+  width: min(75%, 260px);
+  height: auto;
+  object-fit: contain;
+  filter: brightness(1.08);
+}
+
+.brandDivider {
+  width: 32px;
+  height: 2px;
+  background: rgba(233,115,32,0.55);
+  border-radius: 2px;
+}
+
+.brandAppName {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+}
+
+.brandAccent { color: rgba(233,115,32,0.85); }
+
+/* Bottom: footer */
+.brandBottom {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  width: 100%;
+  text-align: center;
+}
+
+.brandFooter {
+  font-size: 0.68rem;
+  color: #E97320;
+  opacity: 0.75;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Painel direito (formulário) ─────────────────────────── */
+.formPanel {
+  flex: 1;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem;
+}
+
+.formBox {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Cabeçalho do form */
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.formTitle {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.formSub {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Formulário */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 13px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: 0.82rem 1rem 0.82rem 2.6rem;
+  border-radius: 11px;
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font-size: 0.88rem;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+.input::placeholder { color: var(--text-muted); }
+
+.input:focus {
+  border-color: #E97320;
+  box-shadow: 0 0 0 3px rgba(233,115,32,0.11);
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border-radius: 5px;
+  transition: color 0.15s;
+}
+
+.eyeBtn:hover { color: var(--text-secondary); }
+
+/* Manter conectado */
+.rememberRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.rememberCheck {
+  width: 15px;
+  height: 15px;
+  accent-color: #E97320;
+  cursor: pointer;
+}
+
+.rememberLabel {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Erro */
+.errorMsg {
+  font-size: 0.8rem;
+  color: #ef4444;
+  background: rgba(239,68,68,0.07);
+  border: 1px solid rgba(239,68,68,0.18);
+  border-radius: 9px;
+  padding: 0.6rem 0.9rem;
+  margin: 0;
+}
+
+/* Botão entrar */
+.submitBtn {
+  width: 100%;
+  padding: 0.9rem;
+  border-radius: 11px;
+  border: none;
+  background: linear-gradient(135deg, #E97320 0%, #F58B44 100%);
+  color: white;
+  font-size: 0.93rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(233,115,32,0.32);
+  transition: box-shadow 0.2s, transform 0.15s;
+  margin-top: 0.15rem;
+  letter-spacing: 0.01em;
+}
+
+.submitBtn:hover:not(.submitDisabled) {
+  box-shadow: 0 6px 24px rgba(233,115,32,0.48);
+  transform: translateY(-1px);
+}
+
+.submitDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+}
+
+.spinnerRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Footer do form */
+.formFooter {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin: 0;
+}
+
+.formFooterLink {
+  color: #E97320;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+
+.formFooterLink:hover {
+  opacity: 0.75;
+  text-decoration: underline;
+}
+
+/* Botão de tema */
+.themeBtn {
+  position: absolute;
+  top: 1.1rem;
+  right: 1.1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: var(--text-muted);
+  padding: 0.38rem 0.48rem;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+
+.themeBtn:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+  border-color: var(--border-strong);
+}
+
+/* ── Ajuste light mode ───────────────────────────────────── */
+[data-theme="light"] .brandPanel {
+  background: #ffffff;
+  border-right: 1px solid rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .brandDots {
+  background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px);
+}
+
+[data-theme="light"] .brandAppName {
+  color: rgba(0,0,0,0.4);
+}
+
+[data-theme="light"] .formPanel {
+  background: #f5f5f5;
+}
+
+[data-theme="light"] .formBox .input {
+  background: #ffffff;
+  border-color: #d1d5db;
+}
+
+[data-theme="light"] .formBox .input:focus {
+  border-color: #E97320;
+  box-shadow: 0 0 0 3px rgba(233,115,32,0.1);
+}
+
+[data-theme="light"] .submitDisabled {
+  background: #e5e7eb;
+  color: #9ca3af;
+}
+
+/* ══════════════════════════════════════════════════════════
+   LOADING SCREEN
+   ══════════════════════════════════════════════════════════ */
+
+.loadingScreen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.loadingCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.loadingLogo {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.loadingSpinner {
+  width: 30px;
+  height: 30px;
+  border: 2.5px solid rgba(233,115,32,0.18);
+  border-top-color: #E97320;
+  border-radius: 50%;
+  animation: spin 0.85s linear infinite;
+}
+
+.loadingPhrase {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-align: center;
+  min-height: 1.2em;
+  margin: 0;
+}
+
+.progressTrack {
+  width: 200px;
+  height: 2px;
+  background: var(--border-strong);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #E97320, #F58B44);
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

@@ -1,0 +1,339 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.875rem;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  gap: 1rem;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.stat {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.06);
+  color: var(--text-secondary);
+}
+
+.statOk  { background: rgba(34,197,94,0.12);  color: #22c55e; }
+.statErr { background: rgba(239,68,68,0.12);  color: #ef4444; }
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.pasteHint {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 7px;
+  border: 1px solid var(--border-strong);
+  background: rgba(249,115,22,0.08);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+
+.addBtn:hover { background: rgba(249,115,22,0.15); }
+
+/* Table */
+.tableWrap {
+  overflow-x: auto;
+  min-height: 420px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+}
+
+.table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg-elevated);
+}
+
+.table th {
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-strong);
+  white-space: nowrap;
+  position: relative;
+}
+
+.thNum { width: 32px; text-align: center; }
+.thDel { width: 32px; }
+
+.reqMark {
+  color: var(--accent);
+  margin-left: 2px;
+  font-size: 0.6rem;
+}
+
+/* Rows */
+.tr { transition: background 0.1s; }
+.tr:hover { background: rgba(0,0,0,0.04); }
+.tr:last-child td { border-bottom: none; }
+
+.trError  td { background: rgba(239,68,68,0.04); }
+.trOk     td { background: transparent; }
+.trEmpty  td { background: transparent; opacity: 0.5; }
+
+/* Cells */
+.td {
+  position: relative;
+  padding: 0;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.td:last-child { border-right: none; }
+
+.tdErr { outline: 1px solid rgba(239,68,68,0.5); outline-offset: -1px; }
+.tdFoc { outline: 1px solid rgba(249,115,22,0.6); outline-offset: -1px; }
+
+.tdNum {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 0 0.4rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+  user-select: none;
+}
+
+.tdDel {
+  padding: 0 0.2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Cell input */
+.cellInput {
+  width: 100%;
+  padding: 0.42rem 0.5rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  white-space: nowrap;
+}
+
+.cellInput::placeholder {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-family: inherit;
+}
+
+/* number input: remove spinners */
+.cellInput[type="number"]::-webkit-inner-spin-button,
+.cellInput[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+.cellInput[type="number"] { -moz-appearance: textfield; }
+
+/* Select cell */
+.cellSelect {
+  width: 100%;
+  padding: 0.42rem 0.4rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.cellSelect option {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+/* Read-only locked cell */
+.cellReadOnly {
+  display: block;
+  padding: 0.42rem 0.5rem;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  font-family: 'Courier New', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.tdLocked { background: rgba(0,0,0,0.04) !important; }
+
+/* Error tooltip */
+.errTooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  background: #ef4444;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 20;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(2px);
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.td:hover .errTooltip { opacity: 1; transform: translateY(0); }
+
+/* Delete btn */
+.delBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 4px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s, background 0.15s;
+}
+
+.delBtn:hover {
+  color: var(--error);
+  background: rgba(239,68,68,0.1);
+}
+
+/* Empty */
+.empty {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+/* perApur mismatch warning cell */
+.tdWarn {
+  background: rgba(245,158,11,0.07) !important;
+  outline: 1px solid rgba(245,158,11,0.45) !important;
+  outline-offset: -1px;
+}
+
+.warnTooltip {
+  background: #b45309 !important;
+}
+
+/* ── Column header info dot ─────────────────────────────────────────────── */
+.thInfoDot {
+  margin-left: 3px;
+  font-size: 0.58rem;
+  color: rgba(233,115,32,0.55);
+  font-style: normal;
+  vertical-align: super;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Column header rich tooltip ─────────────────────────────────────────── */
+.colTip {
+  position: fixed;
+  z-index: 9999;
+  max-width: 265px;
+  min-width: 190px;
+  background: #0a1612;
+  border: 1px solid rgba(233,115,32,0.4);
+  border-radius: 10px;
+  padding: 0.65rem 0.8rem;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.04);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.colTipLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.colTipBadge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+  color: #E97320;
+  background: rgba(233,115,32,0.13);
+  border-radius: 4px;
+  padding: 1px 6px;
+  width: fit-content;
+}
+
+.colTipText {
+  font-size: 0.70rem;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.5;
+  white-space: normal;
+  margin: 0;
+}
+
+.colTipExample {
+  display: block;
+  font-size: 0.69rem;
+  font-family: 'Courier New', monospace;
+  color: #4ade80;
+  background: rgba(74,222,128,0.09);
+  border-radius: 4px;
+  padding: 3px 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}

@@ -1,0 +1,129 @@
+.zone {
+  border: 2px dashed var(--border-strong);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-elevated);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.zone:hover {
+  border-color: rgba(249,115,22,0.45);
+  background: rgba(249,115,22,0.04);
+}
+
+.dragging {
+  border-color: var(--accent);
+  background: rgba(249,115,22,0.06);
+  box-shadow: 0 0 0 3px rgba(249,115,22,0.12);
+}
+
+.filled {
+  border-color: rgba(34,197,94,0.45);
+  background: rgba(34,197,94,0.04);
+  cursor: default;
+}
+
+.filled:hover {
+  border-color: rgba(34,197,94,0.55);
+  background: rgba(34,197,94,0.06);
+}
+
+/* Placeholder */
+.placeholder {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.iconWrap {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.zone:hover .iconWrap {
+  background: rgba(249,115,22,0.12);
+  color: var(--accent);
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.mainLabel {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.subLabel {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+}
+
+.uploadIcon { color: var(--text-muted); flex-shrink: 0; opacity: 0.5; }
+
+/* File info */
+.fileInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.checkIcon { color: var(--success); flex-shrink: 0; }
+
+.fileMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.fileName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileSize {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.clearBtn {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.clearBtn:hover {
+  background: rgba(239,68,68,0.1);
+  color: var(--error);
+  border-color: rgba(239,68,68,0.3);
+}

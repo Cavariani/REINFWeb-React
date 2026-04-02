@@ -1,0 +1,87 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ── Backgrounds — Light corporate ── */
+  --bg-primary:   #E8EDF4;
+  --bg-secondary: #DDE3EC;
+  --bg-card:      #FFFFFF;
+  --bg-elevated:  #F2F5FA;
+  --bg-sidebar:   #1D3D3A;
+
+  /* ── Text ── */
+  --text-primary:   #0C1929;
+  --text-secondary: #354560;
+  --text-muted:     #5A6D87;
+
+  /* ── Borders ── */
+  --border:        rgba(0,0,0,0.09);
+  --border-strong: rgba(0,0,0,0.16);
+
+  /* ── MLEGATE Orange (#E97320 — cor exata do "M" da logo) ── */
+  --accent:        #E97320;
+  --accent-hover:  #D4661B;
+  --accent-glow:   rgba(233, 115, 32, 0.28);
+  --gradient:      linear-gradient(135deg, #F08530 0%, #E06018 100%);
+
+  /* ── MLEGATE Teal (cor escura da logo) ── */
+  --brand-teal:    #1D3D3A;
+  --brand-teal-lg: #2A5250;
+
+  /* ── Status ── */
+  --success:    #22c55e;
+  --success-bg: rgba(34,197,94,0.12);
+  --error:      #ef4444;
+  --error-bg:   rgba(239,68,68,0.12);
+  --warning:    #f59e0b;
+  --warning-bg: rgba(245,158,11,0.12);
+  --purple:     #a78bfa;
+  --blue:       #5b8ff9;
+
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+body { min-height: 100vh; background: var(--bg-primary); }
+button { cursor: pointer; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.28); }
+
+/* ── Dark mode — Navy premium (mesma família da sidebar) ───── */
+[data-theme="dark"] {
+  --bg-primary:   #0C1220;
+  --bg-secondary: #090E18;
+  --bg-card:      #141C2E;
+  --bg-elevated:  #1B2540;
+  --bg-sidebar:   #0E1520;
+
+  --text-primary:   #D8E8F2;
+  --text-secondary: #97B3D5;
+  --text-muted:     #6A87A8;
+
+  --border:        rgba(255,255,255,0.07);
+  --border-strong: rgba(255,255,255,0.13);
+}
+
+[data-theme="dark"] body { background: var(--bg-primary); }
+
+/* ── Transição suave entre temas — ativa só durante a troca ─ */
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition:
+    background-color 0.28s ease,
+    color            0.22s ease,
+    border-color     0.25s ease,
+    box-shadow       0.25s ease !important;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.11); }
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
